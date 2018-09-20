@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/tasks';
 import { TaskService } from '../../services/task.service';
+import { compilePipeFromMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-tasks',
@@ -16,8 +17,15 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
     this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
-    })
-    
+    });
+  }
+
+  deleteTask(task) {
+    const response = confirm("Deseja remover a tarefa?");
+    if(response) {
+      this.taskService.deleteTask(task);
+    }
+    return;
   }
 
 }

@@ -1,9 +1,13 @@
 <div *ngIf="tasks?.length > 0; else noTasks">
     <ul *ngFor="let task of tasks" class="collection">
-        <li class="collection-item"><strong>{{ task.titulo }}</strong> : {{ task.descricao }}</li>
+        <li class="collection-item" (dblclick)="deleteTask(task)"><strong>{{ task.titulo }}</strong> : {{ task.descricao }}</li>
+        <div class="secondary-content">
+            <a href="#" (click)="deleteTask(task)"><i class="fa fa-trash"></i></a>
+            <a href="#" (click)="updateTask(task)"><i class="fa fa-pencil"></i></a>
+        </div>
     </ul>
 </div>
 
 <ng-template #noTasks>
-    <h5>There is no Tasks yet.</h5>
+    <h5>Ainda não há tarefas.</h5>
 </ng-template>
