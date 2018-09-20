@@ -1,3 +1,19 @@
-<p>
-  add-tasks works!
-</p>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">
+      Adicionar Tarefa
+    </span>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="input-field" col-s6>
+          <input type="text" placeholder="Add Titulo" name="titulo" [(ngModel)]="task.titulo">
+        </div>
+        <div class="input-field" col-s6>
+            <input type="text" placeholder="Add Descrição" name="descricao" [(ngModel)]="task.descricao">
+        </div>
+      </div>
+      <input type="submit" class="btn blue" value="Adicionar">
+    </form>
+  </div>
+</div>
