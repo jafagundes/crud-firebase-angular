@@ -11,6 +11,8 @@ import { compilePipeFromMetadata } from '@angular/compiler';
 export class TasksComponent implements OnInit {
 
   tasks: Task[];
+  editState: boolean = false;
+  taskEdit: Task;
 
   constructor(public taskService: TaskService) { }
 
@@ -21,11 +23,21 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(task) {
-    const response = confirm("Deseja remover a tarefa?");
+    const response = confirm("Deseja remover a " + task.titulo);
     if(response) {
       this.taskService.deleteTask(task);
     }
     return;
+  }
+
+  editTask(task) {
+    this.editState = !this.editState;
+    this.taskEdit = task;
+  }
+
+  updateTask(task) {
+    this.taskService.updateTask(task);
+    this.editState = false;
   }
 
 }
